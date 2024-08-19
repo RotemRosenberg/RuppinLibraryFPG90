@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ServerSideFG90.props" />
+</Project>
