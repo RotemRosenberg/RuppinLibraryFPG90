@@ -18,7 +18,7 @@
     }
 });
 
-//login system
+//login systemff
 function accountDetails() {
 
     let api = `https://localhost:7163/api/Users/` + localStorage.getItem('loggedUser');
