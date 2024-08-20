@@ -169,9 +169,15 @@ function RenderBooks(data) {
         subTitle.innerText = book.subTitle;
         bookDiv.appendChild(subTitle);
 
-        let authorName = document.createElement('p');
-        authorName.innerText = "Author: " + book.authorsID;
-        bookDiv.appendChild(authorName);
+        let Name = document.createElement('p');
+        Name.innerText = "Author: " + book.authorNames[0];
+        if (book.authorNames[1] != "") {
+            Name.innerText += ", " + book.authorNames[1];
+        }
+        if (book.authorNames[2] != "") {
+            Name.innerText += ", " + book.authorNames[2];
+        }
+        bookDiv.appendChild(Name);
 
         let ebook = document.createElement('p');
         ebook.innerText = book.isEbook ? "Digital book" : "Physical book";

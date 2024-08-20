@@ -117,10 +117,16 @@ function RenderSpecificBook(book) {
         subTitle.innerText = book.subTitle;
         bookTextContainer.appendChild(subTitle);
 
-        // שם המחבר
-        let authorName = document.createElement('p');
-        authorName.innerText = "Author: " + book.authorsID;
-        bookTextContainer.appendChild(authorName);
+    // שם המחבר
+    let Name = document.createElement('p');
+    Name.innerText = "Author: " + book.authorNames[0];
+    if (book.authorNames[1] != "") {
+        Name.innerText += ", " + book.authorNames[1];
+    }
+    if (book.authorNames[2] != "") {
+        Name.innerText += ", " + book.authorNames[2];
+    }
+    bookTextContainer.appendChild(Name);
 
         // סוג הספר (דיגיטלי או פיזי)
         let ebook = document.createElement('p');
