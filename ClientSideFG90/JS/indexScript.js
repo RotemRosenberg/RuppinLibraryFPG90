@@ -66,12 +66,12 @@ function RenderTop5Books(data) {
         bookDiv.appendChild(subTitle);
 
         let Name = document.createElement('p');
-        Name.innerText = "Author: " + book.authorName1;
-        if (book.authorName2 != null) {
-            Name.innerText += ", " + book.authorName2;
+        Name.innerText = "Author: " + book.authorNames[0];
+        if (book.authorNames[1] != "") {
+            Name.innerText += ", " + book.authorNames[1];
         }
-        if (book.authorName3 != null) {
-            Name.innerText += ", " + book.authorName3;
+        if (book.authorNames[2] != "") {
+            Name.innerText += ", " + book.authorNames[2];
         }
         bookDiv.appendChild(Name);
 
