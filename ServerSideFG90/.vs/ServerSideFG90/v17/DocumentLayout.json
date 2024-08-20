@@ -68,7 +68,7 @@
               "RelativeDocumentMoniker": "DAL\\DBservices.cs",
               "ToolTip": "C:\\Users\\rotem\\OneDrive\\\u05E9\u05D5\u05DC\u05D7\u05DF \u05D4\u05E2\u05D1\u05D5\u05D3\u05D4\\FinalProjectG90\\ServerSideFG90\\DAL\\DBservices.cs",
               "RelativeToolTip": "DAL\\DBservices.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAYwGkAAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGkAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-19T09:13:48.031Z",
               "EditorCaption": ""
@@ -83,8 +83,7 @@
               "RelativeToolTip": "Controllers\\UsersController.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAQwBMAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T11:01:45.573Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T11:01:45.573Z"
             },
             {
               "$type": "Document",
@@ -96,8 +95,7 @@
               "RelativeToolTip": "Controllers\\BookController.cs",
               "ViewState": "AQIAADQAAAAAAAAAAAAmwEEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T09:13:19.758Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T09:13:19.758Z"
             },
             {
               "$type": "Document",
@@ -121,8 +119,7 @@
               "RelativeToolTip": "BL\\Book.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T09:12:48.102Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T09:12:48.102Z"
             },
             {
               "$type": "Document",

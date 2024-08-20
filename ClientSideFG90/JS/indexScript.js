@@ -65,9 +65,15 @@ function RenderTop5Books(data) {
         subTitle.innerText = book.subTitle;
         bookDiv.appendChild(subTitle);
 
-        let authorName = document.createElement('p');
-        authorName.innerText = "Author: " + book.authorsID;
-        bookDiv.appendChild(authorName);
+        let Name = document.createElement('p');
+        Name.innerText = "Author: " + book.authorName1;
+        if (book.authorName2 != null) {
+            Name.innerText += ", " + book.authorName2;
+        }
+        if (book.authorName3 != null) {
+            Name.innerText += ", " + book.authorName3;
+        }
+        bookDiv.appendChild(Name);
 
         let ebook = document.createElement('p');
         if (book.isEbook) ebook.innerText = "Digital book";
