@@ -23,6 +23,47 @@ namespace ServerSideFG90.Controllers
             return Book.Top5();
         }
 
+        // GET api/<BookController>/id/5
+        [HttpGet("id/{id}")]
+        public Book GetSpecificBook(int id)
+        {
+            return Book.GetBookById(id);
+        }
+
+        // GET api/<BookController>/search
+        [HttpGet("{query}")]
+        public ActionResult<IEnumerable<Book>> SearchBooks(string query, string type)
+        {
+            if (type == "title")
+            {
+                List<Book> books = Book.readBooksByTitle(query);
+                if (books == null || books.Count == 0)
+                {
+                        return NotFound();
+                }
+                    return Ok(books);
+                }
+            else if (type == "author")
+            {
+                List<Book> books = Book.readBooksByAuthor(query);
+                if (books == null || books.Count == 0)
+                {
+                    return NotFound();
+                }
+                return Ok(books);
+            }
+            else if (type == "text")
+            {
+                List<Book> books = Book.readBooksByText(query);
+                if (books == null || books.Count == 0)
+                {
+                    return NotFound();
+                }
+                return Ok(books);
+            }
+            return BadRequest("Invalid type");
+        }
+
         // POST api/<BookController>
         [HttpPost]
         public void Post([FromBody] string value)

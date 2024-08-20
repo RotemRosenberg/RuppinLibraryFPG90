@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    GetBooks();
     $("#loginBTN").click(openLoginForm);
     $("#registerBTN").click(function () {
         openRegistrationForm();
@@ -17,10 +16,9 @@
         $("#registerBTN").show();
         $("#logoutBTN").hide();
     }
-    $("#searchButton").click(function () {
-        SearchBooksBy();
-    });
+    GetAuthors();
 });
+
 //login system
 function accountDetails() {
 
@@ -28,7 +26,15 @@ function accountDetails() {
     ajaxCall("GET", api, "", getAccount, failedAccount);
 
 }
-
+function getAccount(account) {
+    document.getElementById("accountDetails").innerHTML =
+        `Hello <span style="color: red; font-weight: bold;">${account.name}</span> Balance: 
+        <span style="color: red; font-weight: bold;">${account.balance}$</span>`;
+    console.log(account);
+}
+function failedAccount(err) {
+    console.log(err);
+}
 //login form
 function openLoginForm() {
     var url = "loginForm.html";
@@ -65,32 +71,86 @@ function openRegistrationForm() {
     // Open the registration form page in a different window
     window.open(url, "_blank", features);
 }
-function getAccount(account) {
-    document.getElementById("accountDetails").innerHTML =
-        `Hello <span style="color: red; font-weight: bold;">${account.name}</span> Balance: 
-        <span style="color: red; font-weight: bold;">${account.balance}$</span>`;
-    console.log(account);
-}
-function failedAccount(err) {
-    console.log(err);
-}
-function GetBooks() {
 
-    let api = `https://localhost:7163/api/Book`;
+//get all author
+function GetAuthors() {
+    let api = `https://localhost:7163/api/Author`;
     ajaxCall("GET", api, "", getSCBF, getECBF);
-
 }
 function getSCBF(result) {
-    RenderBooks(result);
+    RenderAuthors(result);
     console.log(result);
 }
 function getECBF(err) {
     console.log(err);
 }
 
+function RenderAuthors(data) {
+    document.getElementById('searchBooks').style.display = 'block';
+    document.getElementById('allAuthors').innerHTML = '';
+    document.getElementById('AuthorBooks').innerHTML = '';
+    document.getElementById('allBooks').innerHTML = '';
+    const authorContainer = document.getElementById('allAuthors');
+    for (let author of data) {
+        const authorDiv = document.createElement('div');
+        authorDiv.className = "bookDiv";
+
+        let authorImg = document.createElement('img');
+        if (author.gender == 'M') {
+            authorImg.src = '../images/ManAuthor.png';
+        }
+        else {
+            authorImg.src = '../images/GirlAuthor.png';
+        }
+        authorDiv.appendChild(authorImg);
+
+        let title = document.createElement('h3');
+        title.innerText = author.authorName;
+        authorDiv.appendChild(title);
+
+        let age = document.createElement('p');
+        age.innerText ="Age: " + (2024 - author.yearBirth);
+        authorDiv.appendChild(age);
+
+        let authorDescription = document.createElement('p');
+        authorDescription.innerText = author.description;
+        authorDiv.appendChild(authorDescription);
+
+        let btnAuthorBooks = document.createElement('button');
+        btnAuthorBooks.innerText = 'View Books';
+        btnAuthorBooks.classList.add('btnStyle');
+        btnAuthorBooks.addEventListener('click', function () {
+            localStorage.setItem("Author", author.authorName);
+            let api = `https://localhost:7163/api/Book/` + author.authorName + `?type=author`;
+         ajaxCall("GET", api, "", searchSCBF, searchECBF);
+        });
+        authorDiv.appendChild(btnAuthorBooks);
+        authorContainer.appendChild(authorDiv);
+    }
+}
+function searchSCBF(result) {
+    if (result.length === 0) {
+        alert("No books found written by the specified author.");
+    } else {
+        RenderBooks(result);
+    }
+    console.log(result);
+}
+function searchECBF(err) {
+    alert("No books found written by the specified author.")
+    console.log(err);
+}
 
 function RenderBooks(data) {
+    document.getElementById('searchBooks').style.display = 'none';
+    document.getElementById('allAuthors').innerHTML = '';
+    document.getElementById('AuthorBooks').innerHTML = '';
     document.getElementById('allBooks').innerHTML = '';
+    const AuthorBooksContainer = document.getElementById('AuthorBooks');
+    let AuthorTitle = document.createElement('h1')
+    AuthorTitle.innerText = localStorage.getItem("Author") + " Books";
+    AuthorBooksContainer.appendChild(AuthorTitle)
+    localStorage.removeItem("Author");
     const bookContainer = document.getElementById('allBooks');
 
     for (let book of data) {
@@ -151,28 +211,4 @@ function RenderBooks(data) {
         bookContainer.appendChild(bookDiv);
     }
 
-}
-
-
-//filters
-function SearchBooksBy() {
-    let searchType = $("#searchType").val();
-    let searchInput = $("#searchInput").val();
-    let api;
-    if (searchType == 'title') api = `https://localhost:7163/api/Book/` + searchInput +`?type=title`;
-    else if (searchType == 'text')  api = `https://localhost:7163/api/Book/` + searchInput + `?type=text`;
-    else if (searchType == 'author')  api = `https://localhost:7163/api/Book/` + searchInput + `?type=author`;
-    ajaxCall("GET", api, "", searchSCBF, searchECBF);
-}
-function searchSCBF(result) {
-    if (result.length === 0) {
-        alert("No books found matching your search");
-    } else {
-        RenderBooks(result);
-    }
-    console.log(result);
-}
-function searchECBF(err) {
-    alert("No books found matching your search")
-    console.log(err);
 }

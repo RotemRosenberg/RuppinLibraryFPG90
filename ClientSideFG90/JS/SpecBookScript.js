@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    GetBooks();
     $("#loginBTN").click(openLoginForm);
     $("#registerBTN").click(function () {
         openRegistrationForm();
@@ -17,9 +16,7 @@
         $("#registerBTN").show();
         $("#logoutBTN").hide();
     }
-    $("#searchButton").click(function () {
-        SearchBooksBy();
-    });
+    SpecificBook();
 });
 //login system
 function accountDetails() {
@@ -28,7 +25,15 @@ function accountDetails() {
     ajaxCall("GET", api, "", getAccount, failedAccount);
 
 }
-
+function getAccount(account) {
+    document.getElementById("accountDetails").innerHTML =
+        `Hello <span style="color: red; font-weight: bold;">${account.name}</span> Balance: 
+        <span style="color: red; font-weight: bold;">${account.balance}$</span>`;
+    console.log(account);
+}
+function failedAccount(err) {
+    console.log(err);
+}
 //login form
 function openLoginForm() {
     var url = "loginForm.html";
@@ -65,62 +70,69 @@ function openRegistrationForm() {
     // Open the registration form page in a different window
     window.open(url, "_blank", features);
 }
-function getAccount(account) {
-    document.getElementById("accountDetails").innerHTML =
-        `Hello <span style="color: red; font-weight: bold;">${account.name}</span> Balance: 
-        <span style="color: red; font-weight: bold;">${account.balance}$</span>`;
-    console.log(account);
-}
-function failedAccount(err) {
-    console.log(err);
-}
-function GetBooks() {
 
-    let api = `https://localhost:7163/api/Book`;
+//DisplaySpecificBook
+function SpecificBook() {
+    let api = `https://localhost:7163/api/Book/id/` + localStorage.getItem('selectedBookId');
     ajaxCall("GET", api, "", getSCBF, getECBF);
-
 }
 function getSCBF(result) {
-    RenderBooks(result);
+    RenderSpecificBook(result);
     console.log(result);
 }
 function getECBF(err) {
     console.log(err);
 }
 
+function RenderSpecificBook(book) {
 
-function RenderBooks(data) {
-    document.getElementById('allBooks').innerHTML = '';
-    const bookContainer = document.getElementById('allBooks');
+        // מוודא שהאלמנטים קיימים לפני המשך הביצוע
+        let bookIMGContainer = document.getElementById('imgBook');
+        let bookTextContainer = document.getElementById('bookText');
+        let bookReviewContainer = document.getElementById('bookReview');
+    bookIMGContainer.innerHTML = '';
+    bookTextContainer.innerHTML = '';
+    bookReviewContainer.innerHTML = '';
+        if (!bookIMGContainer || !bookTextContainer || !bookReviewContainer) {
+            console.error('One or more elements were not found in the DOM');
+            console.log(document.getElementById('bookIMG'));
+            console.log(document.getElementById('bookText'));
+            console.log(document.getElementById('bookReview'));
 
-    for (let book of data) {
-        const bookDiv = document.createElement('div');
-        bookDiv.className = "bookDiv";
+            return;
+        }
 
+        // תמונת הספר
         let bookImg = document.createElement('img');
         bookImg.src = book.smallPicURL;
-        bookDiv.appendChild(bookImg);
+        bookIMGContainer.appendChild(bookImg);
 
-        let title = document.createElement('h3');
+        // כותרת הספר
+        let title = document.createElement('h2');
         title.innerText = book.title;
-        bookDiv.appendChild(title);
+        bookTextContainer.appendChild(title);
 
-        let subTitle = document.createElement('h4');
+        // כותרת משנה
+        let subTitle = document.createElement('h3');
         subTitle.innerText = book.subTitle;
-        bookDiv.appendChild(subTitle);
+        bookTextContainer.appendChild(subTitle);
 
+        // שם המחבר
         let authorName = document.createElement('p');
         authorName.innerText = "Author: " + book.authorsID;
-        bookDiv.appendChild(authorName);
+        bookTextContainer.appendChild(authorName);
 
+        // סוג הספר (דיגיטלי או פיזי)
         let ebook = document.createElement('p');
         ebook.innerText = book.isEbook ? "Digital book" : "Physical book";
-        bookDiv.appendChild(ebook);
+        bookTextContainer.appendChild(ebook);
 
+        // מחיר הספר
         let price = document.createElement('p');
         price.innerText = "Price: " + book.price + "$";
-        bookDiv.appendChild(price);
+        bookTextContainer.appendChild(price);
 
+        // ציון הספר (כוכבים)
         let rating = document.createElement('div');
         rating.className = "stars";
 
@@ -136,43 +148,5 @@ function RenderBooks(data) {
             rating.appendChild(star);
         }
 
-        bookDiv.appendChild(rating);
-        let btnBookDetails = document.createElement('button');
-        btnBookDetails.innerText = 'More Details';
-        btnBookDetails.classList.add('btnStyle');
-        btnBookDetails.addEventListener('click', function () {
-            // שמירת ה-ID של הספר ב-localStorage
-            localStorage.setItem('selectedBookId', book.id);
-
-            // מעבר לדף SpecificBook.html
-            window.location.href = 'SpecificBook.html';
-        });
-        bookDiv.appendChild(btnBookDetails);
-        bookContainer.appendChild(bookDiv);
-    }
-
-}
-
-
-//filters
-function SearchBooksBy() {
-    let searchType = $("#searchType").val();
-    let searchInput = $("#searchInput").val();
-    let api;
-    if (searchType == 'title') api = `https://localhost:7163/api/Book/` + searchInput +`?type=title`;
-    else if (searchType == 'text')  api = `https://localhost:7163/api/Book/` + searchInput + `?type=text`;
-    else if (searchType == 'author')  api = `https://localhost:7163/api/Book/` + searchInput + `?type=author`;
-    ajaxCall("GET", api, "", searchSCBF, searchECBF);
-}
-function searchSCBF(result) {
-    if (result.length === 0) {
-        alert("No books found matching your search");
-    } else {
-        RenderBooks(result);
-    }
-    console.log(result);
-}
-function searchECBF(err) {
-    alert("No books found matching your search")
-    console.log(err);
+        bookTextContainer.appendChild(rating);  // הוספת הדירוג לקונטיינר הטקסט
 }

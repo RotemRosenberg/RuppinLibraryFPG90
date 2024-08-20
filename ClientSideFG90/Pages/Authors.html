@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Authors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../CSS/StyleSheet.css" rel="stylesheet" />
+    <script src="../JS/AuthorsScript.js"></script>
+    <script src="../JS/ajaxcalls.js"></script>
+</head>
+<body>
+    <!-- סרגל עליון -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="../images/Ruppin Library.png" alt="Ruppin Library Logo" />
+        </div>
+        <div class="nav-buttons">
+            <p id="accountDetails"></p>
+            <button id="loginBTN">Login</button>
+            <button id="registerBTN">Register</button>
+            <button id="logoutBTN">Logout</button>
+        </div>
+    </div>
+
+    <!-- סרגל צדדי -->
+    <div class="sidebar">
+        <a onclick="window.location.href='index.html'">Home</a>
+        <a onclick="window.location.href='Books.html'">Books</a>
+        <a onclick="window.location.href='Authors.html'">Authors</a>
+        <a onclick="window.location.href='MyLibrary.html'">My Library</a>
+    </div>
+    <div class="container" id="content">
+        <div id="searchBooks">
+            <h2>Search for a Author</h2>
+            <div id="searchContainer">
+                <input type="text" id="searchInput" placeholder="Search">
+                <button id="searchButton">Search</button>
+            </div>
+        </div>
+        <div class="booksContainer" id="allAuthors">
+        </div>
+        <div id="AuthorBooks">
+        </div>
+        <div class="AuthorbooksContainer" id="allBooks">
+        </div>
+
+    </div>
+</body>
+</html>

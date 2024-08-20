@@ -1,4 +1,6 @@
-﻿namespace ServerSideFG90.BL
+﻿using ServerSideFG90.DAL;
+
+namespace ServerSideFG90.BL
 {
     public class Author
     {
@@ -22,6 +24,10 @@
         public string Gender { get => gender; set => gender = value; }
         public int YearBirth { get => yearBirth; set => yearBirth = value; }
         public string Description { get => description; set => description = value; }
-
+        public static List<Author> ReadAll()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.ReadAllAuthors();
+        }
     }
 }

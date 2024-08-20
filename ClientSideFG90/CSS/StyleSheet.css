@@ -1,2 +1,355 @@
-﻿body {
+﻿/* עיצוב הסרגל העליון */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 0px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    color: black;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
+
+    /* עיצוב הלוגו */
+    .navbar .logo img {
+        height: 50px; /* גובה הלוגו */
+        width: auto; /* התאמת הרוחב באופן אוטומטי לשמירה על יחס גובה-רוחב */
+    }
+
+    .navbar .nav-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+        .navbar .nav-buttons button {
+            background-color: transparent;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            .navbar .nav-buttons button:hover {
+                background-color: #f0f0f0;
+            }
+
+/* עיצוב סרגל הצד */
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 60px; /* גובה הסרגל העליון */
+    left: 0;
+    background-color: #f7f7f7; /* רקע בהיר */
+    padding-top: 20px;
+    overflow-x: hidden;
+    color: black;
+    border-right: 1px solid #e0e0e0; /* קו מפריד בצד ימין */
+}
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 18px;
+        color: black; /* צבע טקסט כהה */
+        display: block;
+    }
+
+        .sidebar a:hover {
+            background-color: #e0e0e0; /* רקע בהיר יותר בהעבר על הכפתורים */
+        }
+
+/* עיצוב התוכן המרכזי */
+.container {
+    margin-left: 220px; /* מקום לסרגל הצדדי */
+    padding: 20px;
+}
+
+/* מרווח בין התוכן לסרגל העליון */
+body {
+    margin: 0;
+    padding-top: 60px; /* התאמת המרווח לפי גובה הסרגל */
+    font-family: Arial, sans-serif;
+}
+
+/* Media Queries להתאמה למובייל */
+@media (max-width: 768px) {
+    /* עיצוב מחדש של הסרגל העליון למובייל */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+        .navbar .logo img {
+            height: 40px; /* התאמת גובה הלוגו למובייל */
+        }
+
+        .navbar .nav-buttons {
+            margin-top: 10px;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+    /* סרגל הצדדי מתמזער למעלה */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+        .sidebar a {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+    /* התאמת תוכן מרכזי */
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    /* מרווח בין התוכן לסרגל העליון */
+    body {
+        padding-top: 100px; /* התאמת המרווח לפי גובה הסרגל למובייל */
+    }
+}
+/*************************************************************************************************************************************/
+
+
+/* עיצוב הטקסט הראשי של הספרייה */
+.intro {
+    text-align: center;
+    margin: 50px 0;
+}
+
+    .intro h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .intro p {
+        font-size: 18px;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+        color: #555;
+    }
+
+h2 {
+    text-align: center;
+}
+
+/*************************************************************************************************************************************/
+.booksContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 עמודות */
+    gap: 20px; /* מרווח בין הכרטיסיות */
+    justify-content: center;
+}
+.AuthorbooksContainer {
+    display: grid;
+    gap: 20px; /* מרווח בין הכרטיסיות */
+    justify-content: center;
+}
+#AuthorBooks {
+    display: flex;
+    justify-content: center
+}
+/*התאמה למובייל*/
+@media (max-width: 1200px) {
+    .booksContainer {
+        grid-template-columns: repeat(4, 1fr); /* 4 עמודות */
+    }
+}
+
+@media (max-width: 992px) {
+    .booksContainer {
+        grid-template-columns: repeat(3, 1fr); /* 3 עמודות */
+    }
+}
+
+@media (max-width: 768px) {
+    .booksContainer {
+        grid-template-columns: repeat(2, 1fr); /* 2 עמודות */
+    }
+}
+
+@media (max-width: 576px) {
+    .booksContainer {
+        grid-template-columns: 1fr; /* עמודה אחת */
+    }
+}
+
+
+/*כרטיסיה ספר*/
+.bookDiv {
+    border: 1px solid #333; /* הוספת מסגרת מסביב לכרטיסיה */
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 250px; /* גודל הכרטיסיה */
+    text-align: center;
+    background-color: #fff;
+    flex: 1; /* מאפשר גמישות */
+}
+
+    .bookDiv h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .bookDiv h4 {
+        font-size: 16px;
+        font-weight: normal;
+        margin: 5px 0;
+        color: #555;
+    }
+
+    .bookDiv img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    .bookDiv p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .bookDiv .book-type {
+        font-weight: bold;
+        color: #007BFF;
+    }
+
+    .bookDiv .price {
+        font-weight: bold;
+        color: #28a745;
+    }
+
+.stars {
+    display: inline-block;
+    font-size: 0;
+}
+
+    .stars i {
+        font-size: 20px;
+        color: #ddd;
+        margin-right: 2px;
+    }
+
+    .stars .filled {
+        color: gold;
+    }
+
+
+
+/*************************************************************************************************************************************/
+
+/*כפתורים*/
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btnStyle {
+    padding: 10px 20px;
+    background-color: #828282;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+    .btnStyle:hover {
+        background-color: #0056b3;
+    }
+
+/*************************************************************************************************************************************/
+/*חיפוש ספר*/
+#searchBooks {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+    #searchBooks h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+#searchContainer {
+    display: flex;
+    justify-content: center; /* מרכז את התוכן */
+    align-items: center; /* מרכז את התוכן במאונך */
+    gap: 10px; /* מרווח בין האלמנטים */
+    margin-top: 20px;
+}
+
+#searchType {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+#searchInput {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 300px; /* רוחב input */
+    box-sizing: border-box;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    #searchButton:hover {
+        background-color: #0056b3;
+    }
+
+#searchType:focus, #searchInput:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+#searchContainer select, #searchContainer input, #searchContainer button {
+    transition: all 0.3s ease;
+}
+
+    #searchContainer select:hover, #searchContainer input:hover {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        border-color: #007BFF;
+    }
+/*************************************************************************************************************************************/

@@ -36,3 +36,4 @@ C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\o
 C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.pdb
 C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.genruntimeconfig.cache
 C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Debug\net6.0\ref\ServerSideFG90.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.sourcelink.json

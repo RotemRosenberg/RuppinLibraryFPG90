@@ -21,8 +21,10 @@ namespace ServerSideFG90.BL
         string webReaderLink;
         int price;
         int publishedDate;
+        string[] authorNames = new string[3];
+
         public Book() { }
-        public Book(int id, string title, string subTitle, int[] authorsID, string publisher, string description, int pageCount, string categories, double averageRating, string smallPicURL, string picURL, string language, string preivewLink, bool isEbook, string webReaderLink, int price, int publishedDate)
+        public Book(int id, string title, string subTitle, int[] authorsID, string publisher, string description, int pageCount, string categories, double averageRating, string smallPicURL, string picURL, string language, string preivewLink, bool isEbook, string webReaderLink, int price, int publishedDate, string[] authorNames)
         {
             this.Id = id;
             this.Title = title;
@@ -41,6 +43,7 @@ namespace ServerSideFG90.BL
             this.WebReaderLink = webReaderLink;
             this.Price = price;
             this.PublishedDate = publishedDate;
+            this.AuthorNames = authorNames;
         }
 
         public int Id { get => id; set => id = value; }
@@ -60,15 +63,39 @@ namespace ServerSideFG90.BL
         public string WebReaderLink { get => webReaderLink; set => webReaderLink = value; }
         public int Price { get => price; set => price = value; }
         public int PublishedDate { get => publishedDate; set => publishedDate = value; }
+        public string[] AuthorNames { get => authorNames; set => authorNames = value; }
+
         public static List<Book> ReadAll()
         {
             DBservices dbs = new DBservices();
             return dbs.ReadAllBooks();
         }
+        public static Book GetBookById(int id)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.BookById(id);
+        }
+        public static List<Book> readBooksByTitle(string title)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.BooksByTitle(title);
+        }
+        public static List<Book> readBooksByText(string text)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.BooksByText(text);
+        }
+        public static List<Book> readBooksByAuthor(string author)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.BooksByAuthor(author);
+        }
+
         public static List<Book> Top5()
         {
             DBservices dbs = new DBservices();
             return dbs.Top5Books();
         }
+
     }
 }

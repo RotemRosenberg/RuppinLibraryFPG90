@@ -1,4 +1,6 @@
-﻿namespace ServerSideFG90.BL
+﻿using ServerSideFG90.DAL;
+
+namespace ServerSideFG90.BL
 {
     public class Users
     {
@@ -25,6 +27,27 @@
         public string Password { get => password; set => password = value; }
         public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
         public int Balance { get => balance; set => balance = value; }
+
+        public static List<Users> ReadAll()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.ReadAllUsers();
+        }
+        public static Users GetUserById(int id)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.GetUserById(id);
+        }
+        public static Users Login(string email, string password)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.LogInUser(email, password);
+        }
+        public Users RegisterUser()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.RegisterUserDB(this);
+        }
 
     }
 }
