@@ -37,3 +37,42 @@ C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\o
 C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.genruntimeconfig.cache
 C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Debug\net6.0\ref\ServerSideFG90.dll
 C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.sourcelink.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\appsettings.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\ServerSideFG90.exe
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\ServerSideFG90.deps.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\ServerSideFG90.runtimeconfig.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\ServerSideFG90.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\ServerSideFG90.pdb
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.csproj.AssemblyReference.cache
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.AssemblyInfoInputs.cache
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.AssemblyInfo.cs
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.csproj.CoreCompileInputs.cache
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.sourcelink.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\staticwebassets\msbuild.ServerSideFG90.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\staticwebassets\msbuild.build.ServerSideFG90.props
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ServerSideFG90.props
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ServerSideFG90.props
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\scopedcss\bundle\ServerSideFG90.styles.css
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.csproj.CopyComplete
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\refint\ServerSideFG90.dll
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.pdb
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ServerSideFG90.genruntimeconfig.cache
+C:\Users\tkgs6\Desktop\workSpace\RuppinLibraryFPG90\ServerSideFG90\obj\Debug\net6.0\ref\ServerSideFG90.dll

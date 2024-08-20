@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServerSideFG90")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f4c6c17af4ea717b8745d6d8bbf4a6ca9aeca9b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12450636bed71bb9a05c177b82924e6ede8b4c41")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServerSideFG90")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServerSideFG90")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
