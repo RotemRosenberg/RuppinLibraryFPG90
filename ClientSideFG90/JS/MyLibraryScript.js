@@ -31,7 +31,11 @@
             window.location.href = 'MyLibrary.html?section=wishlist';
             GetWishListBooks();
         } else {
-            alert("Please login first");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please login first!",
+            });
         }
     });
 
@@ -42,44 +46,56 @@
             window.location.href = 'MyLibrary.html?section=read';
             GetReadBooks();
         } else {
-            alert("Please login first");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please login first!",
+            });
         }
     });
 
     // Online Books Shop
-        $("#onlineShopBTN").click(function () {
+    $("#onlineShopBTN").click(function () {
         let loggedUserID = localStorage.getItem('loggedUser');
         if (loggedUserID != null) {
             window.location.href = 'MyLibrary.html?section=sale';
             GetSaleBooks();
         } else {
-            alert("Please login first");
-            }
-        });
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please login first!",
+            });
+        }
+    });
 
 
-        // Purchase Requests
-        $("#purchaseBTN").click(function () {
-            let loggedUserID = localStorage.getItem('loggedUser');
-            if (loggedUserID != null) {
-                window.location.href = 'MyLibrary.html?section=requests';
-                GetPurchaseRequests();
-            } else {
-                alert("Please login first");
-            }
-        });
+    // Purchase Requests
+    $("#purchaseBTN").click(function () {
+        let loggedUserID = localStorage.getItem('loggedUser');
+        if (loggedUserID != null) {
+            window.location.href = 'MyLibrary.html?section=requests';
+            GetPurchaseRequests();
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please login first!",
+            });
+        }
+    });
 });
 
 
 //my library fun
 function toggleSubmenu() { // הצגת התת נושאים של הספריה
-        var submenu = document.getElementById("mylibrary-submenu");
-        if (submenu.style.display === "none") {
-            submenu.style.display = "block";
-        }
-        else {
-            submenu.style.display = "none";
-        }
+    var submenu = document.getElementById("mylibrary-submenu");
+    if (submenu.style.display === "none") {
+        submenu.style.display = "block";
+    }
+    else {
+        submenu.style.display = "none";
+    }
 }
 
 //wish list - user books 
@@ -153,7 +169,7 @@ function renderBooksOfUser(booksList) {
             Name.innerText += ", " + book.authorNames[2];
         }
         bookDiv.appendChild(Name);
-        if (section === 'sale' ) {
+        if (section === 'sale') {
             let bookOwnerID = document.createElement('h4');
             bookOwnerID.innerText = "Owner ID:" + ownerID;
             bookDiv.appendChild(bookOwnerID);
@@ -193,7 +209,7 @@ function renderBooksOfUser(booksList) {
             let price = document.createElement('p');
             price.innerText = "Price: " + book.price + "$"
             bookDiv.appendChild(price);
-
+            
             let buyBookBtn = document.createElement('button');
             buyBookBtn.innerText = 'Buy Book';
             buyBookBtn.classList.add('btnStyle', 'bookButton');
@@ -203,10 +219,14 @@ function renderBooksOfUser(booksList) {
                     requestBookPurchase(book, ownerID, buyBookBtn.id);
                 }
                 else {
-                    alert("You don't have enough money in your account to purchase this book");
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "You don't have enough money in your account to purchase this book!",
+                    });
                 }
             });
-            bookDiv.appendChild(buyBookBtn);
+            bookDiv.appendChild(buyBookBtn);           
         }
         if (section === 'requests') {
             let sellBookBtn = document.createElement('button');
@@ -230,8 +250,28 @@ function markBookAsRead(id) {
     ajaxCall("PUT", api, JSON.stringify(id), MarkSCBF, MarkECBF);
 }
 function MarkSCBF(res) {
-    alert("Book has been marked as read");
-    location.reload();
+    Swal.fire({
+        title: "Book has been marked as read",
+        showClass: {
+            popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                `
+        },
+        hideClass: {
+            popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                `
+        }
+    }).then((result) => {
+        // This function is called after the alert is closed
+        if (result.isConfirmed || result.isDismissed) {
+            window.location.reload(); // Reload the page after the alert is closed
+        }
+    });
     console.log(res);
 }
 function MarkECBF(err) {
@@ -271,7 +311,28 @@ function requestBookPurchase(book, SellerID, buyBookBtnID) {
     ajaxCall("POST", api, JSON.stringify(data), requestSuccess, requestError);
     function requestSuccess(response) {
         console.log("Purchase request successful:", response);
-        alert("Request sent to the book owner");
+        Swal.fire({
+            title: "Request sent to the book owner",
+            showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                `
+            },
+            hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                `
+            }
+        }).then((result) => {
+            // This function is called after the alert is closed
+            if (result.isConfirmed || result.isDismissed) {
+                window.location.reload(); // Reload the page after the alert is closed
+            }
+        });
         let buyBookBtn = document.getElementById(buyBookBtnID);
         if (buyBookBtn) {
             buyBookBtn.disabled = true;
@@ -279,7 +340,11 @@ function requestBookPurchase(book, SellerID, buyBookBtnID) {
         }
     }
     function requestError(err) {
-        alert('You’ve already requested this book');
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You’ve already requested this book",
+        });
         console.log(err)
     }
 }
@@ -316,9 +381,18 @@ function ApproveBookPurchaseRequests(book) {
 }
 function approveSuccess(result) {
     console.log(result);
-    alert("The book have been sold");
-    location.reload();
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "The book has been sold",
+        showConfirmButton: false,
+        timer: 1500
+    }).then(() => {
+        // Perform action after the alert is closed
+        location.reload();
+    });
 }
+
 function approveError(err) {
     console.log(err);
 }
@@ -327,13 +401,13 @@ function approveError(err) {
 function removeFromWishList(book, section) {
 
     let api = `https://194.90.158.74/cgroup90/test2/tar1/api/UserBooks?bookID=${book.id}&userID=${localStorage.getItem('loggedUser')}`;
-        ajaxCall("DELETE", api, "", deleteSCBF, deleteECBF);
+    ajaxCall("DELETE", api, "", deleteSCBF, deleteECBF);
 
-        function deleteSCBF(res) {
-            alert("Book has been deleted from your " + section);
-            location.reload();
-        }
-        function deleteECBF(err) {
-            console.log(err);
-        }
+    function deleteSCBF(res) {
+        alert("Book has been deleted from your " + section);
+        location.reload();
+    }
+    function deleteECBF(err) {
+        console.log(err);
+    }
 }

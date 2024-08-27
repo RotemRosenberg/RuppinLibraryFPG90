@@ -40,14 +40,23 @@ function SearchBooksBy() {
 }
 function searchSCBF(result) {
     if (result.length === 0) {
-        alert("No books found matching your search");
-    } else {
+        Swal.fire({
+            icon: "error",
+            title: "No books found matching your search",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });    } else {
         RenderAllBooks(result);
     }
     console.log(result);
 }
 function searchECBF(err) {
-    alert("No books found matching your search")
+    Swal.fire({
+        icon: "error",
+        title: "No books found matching your search",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+    });
     console.log(err);
 }
 

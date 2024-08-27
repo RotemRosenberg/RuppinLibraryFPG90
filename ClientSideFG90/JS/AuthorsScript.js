@@ -64,14 +64,24 @@ function RenderAuthors(data) {
 }
 function searchSCBF(result) {
     if (result.length === 0) {
-        alert("No books found written by the specified author.");
+        Swal.fire({
+            icon: "error",
+            title: "No books found written by the specified author.",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });
     } else {
         RenderAuthorBooks(result);
     }
     console.log(result);
 }
 function searchECBF(err) {
-    alert("No books found written by the specified author.")
+    Swal.fire({
+        icon: "error",
+        title: "No books found written by the specified author.",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+    });
     console.log(err);
 }
 
@@ -101,14 +111,25 @@ function SearchAuthorsByName() {
 }
 function searchAuthorSCBF(result) {
     if (result.length === 0) {
-        alert("No Authors found matching your search");
+        Swal.fire({
+            icon: "error",
+            title: "No Authors found matching your search",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });
     } else {
         RenderAuthors(result);
     }
     console.log(result);
 }
 function searchAuthorECBF(err) {
-    alert("No Authors found matching your search")
+
+    Swal.fire({
+        icon: "error",
+        title: "No Authors found matching your search",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+    });
     console.log(err);
 }
 

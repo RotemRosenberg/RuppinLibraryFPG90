@@ -62,8 +62,29 @@ function Logout() {
         localStorage.removeItem("userBalance");
         localStorage.removeItem("userName");
         $("#libraryBTN").hide();
-        alert("Disconnected succefully");
-        location.reload();
+        Swal.fire({
+            title: "Disconnected succefully",
+            showClass: {
+                popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `
+            },
+            hideClass: {
+                popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Add a delay before hiding the form and reloading the page
+                location.reload();
+            }
+        });
+
     }
 }
 //register form
@@ -166,7 +187,11 @@ function RenderBooks(data, bookContainer) {
             if (localStorage.getItem('loggedUser')) {
                 if (localStorage.getItem('userBalance') >= book.price) {
                     if (book.isBooked == 1 && book.isEbook == false) {
-                        alert("The book has already been purchased by another user.\n Please try purchasing it through the online shop.");
+                        Swal.fire({
+                            icon: "error",
+                            title: "The book has already been purchased by another user.\n Please try purchasing it through the online shop.",
+                            text: "Something went wrong!",
+                        });
                     }
                     else {    // שמירת ה-ID של הספר ב-localStorage
                         localStorage.setItem('selectedBookId', book.id);
@@ -174,11 +199,20 @@ function RenderBooks(data, bookContainer) {
                     }
                 }
                 else {
-                    alert("You don't have enough money in your account to purchase this book");
+                    Swal.fire({
+                        icon: "error",
+                        title: "You don't have enough money in your account to purchase this book",
+                        text: "Something went wrong!",
+                    });
                 }
             }
-            else
-                alert('Please login');
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: 'Please login',
+                    text: "Something went wrong!",
+                });
+            }
         });
 
         bookDiv.appendChild(wishListBTN);
@@ -189,7 +223,11 @@ function RenderBooks(data, bookContainer) {
 function addToWishList(book) {
     let loggedUserID = localStorage.getItem('loggedUser')
     if (loggedUserID == null) {
-        alert("You may login in order to add item to your wishlist");
+        Swal.fire({
+            icon: "error",
+            title: "You may login in order to add item to your wishlist",
+            text: "Something went wrong!",
+        });   
     }
     else { // logged in user
         let api = `https://194.90.158.74/cgroup90/test2/tar1/api/UserBooks?bookID=${book.id}&userID=${loggedUserID}&bookPrice=${book.price}`;
@@ -206,7 +244,11 @@ function addTWLSCBF(res) {
 }
 function addTWLECBF(err) {
     console.log(err);
-    alert("You have already purchased this book")
+    Swal.fire({
+        icon: "error",
+        title: "You have already purchased this book",
+        text: "Something went wrong!",
+    });   
 }
 function confirmPurchase(book) {
     const swalWithBootstrapButtons = Swal.mixin({

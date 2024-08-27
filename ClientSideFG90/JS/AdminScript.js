@@ -256,12 +256,38 @@ function RenderBooks(data) {
     });
 }
 function deleteSCBF(result) {
-    alert('The book has been delete');
-    console.log(result);
-    window.location.reload();
+    Swal.fire({
+        title: 'The book has been delete',
+        showClass: {
+            popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `
+        },
+        hideClass: {
+            popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Add a delay before hiding the form and reloading the page
+                console.log(result);
+                window.location.reload();
+        }
+    });
+
 }
 function deleteECBF(err) {
-    alert('Error')
+    Swal.fire({
+        icon: "error",
+        title: "Error adding",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+    });
     console.log(err);
 }
 
@@ -309,12 +335,40 @@ function AddBook() {
 }
 
 function addSCBF(result) {
-    alert(result.title + ' has been added');
-    document.getElementById('bookForm').style.display = 'none';
-    console.log(result);
-    window.location.reload();
+    Swal.fire({
+        title: result.title + ' has been added',
+        showClass: {
+            popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `
+        },
+        hideClass: {
+            popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Add a delay before hiding the form and reloading the page
+            setTimeout(() => {
+                document.getElementById('bookForm').style.display = 'none';
+                console.log(result);
+                window.location.reload();
+            }, 1000); // Adjust the delay (in milliseconds) as needed
+        }
+    });
+
 }
 function addECBF(err) {
-    alert('Error adding')
+    Swal.fire({
+        icon: "error",
+        title: "Error adding",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+    });
     console.log(err);
 }
