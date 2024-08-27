@@ -39,30 +39,30 @@
             }
 
 /* עיצוב סרגל הצד */
-.sidebar {
+/*.sidebar {
     height: 100%;
     width: 200px;
     position: fixed;
-    top: 60px; /* גובה הסרגל העליון */
-    left: 0;
-    background-color: #f7f7f7; /* רקע בהיר */
-    padding-top: 20px;
+    top: 60px;*/ /* גובה הסרגל העליון */
+    /*left: 0;
+    background-color: #f7f7f7;*/ /* רקע בהיר */
+    /*padding-top: 20px;
     overflow-x: hidden;
     color: black;
-    border-right: 1px solid #e0e0e0; /* קו מפריד בצד ימין */
-}
+    border-right: 1px solid #e0e0e0;*/ /* קו מפריד בצד ימין */
+/*}
 
     .sidebar a {
         padding: 10px 15px;
         text-decoration: none;
         font-size: 18px;
-        color: black; /* צבע טקסט כהה */
-        display: block;
+        color: black;*/ /* צבע טקסט כהה */
+        /*display: block;
     }
 
         .sidebar a:hover {
-            background-color: #e0e0e0; /* רקע בהיר יותר בהעבר על הכפתורים */
-        }
+            background-color: #e0e0e0;*/ /* רקע בהיר יותר בהעבר על הכפתורים */
+        /*}*/
 
 /* עיצוב התוכן המרכזי */
 .container {
@@ -75,69 +75,67 @@ body {
     margin: 0;
     padding-top: 60px; /* התאמת המרווח לפי גובה הסרגל */
     font-family: Arial, sans-serif;
+    background-image: url('../images/back.jpg'); /* Path to your background image */
 }
 
-/* Media Queries להתאמה למובייל */
-@media (max-width: 768px) {
-    /* עיצוב מחדש של הסרגל העליון למובייל */
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
-    }
 
-        .navbar .logo img {
-            height: 40px; /* התאמת גובה הלוגו למובייל */
-        }
-
-        .navbar .nav-buttons {
-            margin-top: 10px;
-            width: 100%;
-            justify-content: space-around;
-        }
-
-    /* סרגל הצדדי מתמזער למעלה */
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        top: 0;
-        border-right: none;
-        border-bottom: 1px solid #e0e0e0;
-        display: flex;
-        justify-content: space-around;
-    }
-
-        .sidebar a {
-            padding: 10px;
-            font-size: 16px;
-        }
-
-    /* התאמת תוכן מרכזי */
-    .content {
-        margin-left: 0;
-        padding: 20px;
-    }
-
-    /* מרווח בין התוכן לסרגל העליון */
-    body {
-        padding-top: 100px; /* התאמת המרווח לפי גובה הסרגל למובייל */
-    }
-}
 /*************************************************************************************************************************************/
-
-
+.custom-btn {
+    margin-right: 10px; /* מוסיף מרווח ימינה */
+}
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+    .btn-success:hover {
+        color: #fff;
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
 /* עיצוב הטקסט הראשי של הספרייה */
 .intro {
     text-align: center;
-    margin: 50px 0;
+    background-image: url('../images/books-background.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    color: #ffffff; /* Set text color to white */
+    padding: 80px; /* Add padding around the content */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Add shadow for better contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: Add shadow around the div */
+    height: 400px; /* Set a smaller height */
+    position: relative; /* Position relative for potential absolute positioning of child elements */
+    margin: 0; /* Remove any default margin */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
     .intro h1 {
         font-size: 36px;
         font-weight: bold;
         margin-bottom: 20px;
-        color: #333;
+        background: linear-gradient(to right, #ededed, #fff8f2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 3px 3px 6px rgb(0 0 0 / 11%); /* Enhanced text shadow */
     }
 
     .intro p {
@@ -145,8 +143,12 @@ body {
         max-width: 800px;
         margin: 0 auto;
         line-height: 1.6;
-        color: #555;
+        color: #ffffff; /* Ensure text color is white */
+        background: rgba(0, 0, 0, 0.05); /* Semi-transparent background for readability */
+        padding: 10px;
+        border-radius: 5px;
     }
+
 
 h2 {
     text-align: center;
@@ -160,37 +162,13 @@ h2 {
     justify-content: center;
 }
 .AuthorbooksContainer {
-    display: grid;
+    display: flex;
     gap: 20px; /* מרווח בין הכרטיסיות */
     justify-content: center;
 }
 #AuthorBooks {
     display: flex;
     justify-content: center
-}
-/*התאמה למובייל*/
-@media (max-width: 1200px) {
-    .booksContainer {
-        grid-template-columns: repeat(4, 1fr); /* 4 עמודות */
-    }
-}
-
-@media (max-width: 992px) {
-    .booksContainer {
-        grid-template-columns: repeat(3, 1fr); /* 3 עמודות */
-    }
-}
-
-@media (max-width: 768px) {
-    .booksContainer {
-        grid-template-columns: repeat(2, 1fr); /* 2 עמודות */
-    }
-}
-
-@media (max-width: 576px) {
-    .booksContainer {
-        grid-template-columns: 1fr; /* עמודה אחת */
-    }
 }
 
 
@@ -203,7 +181,7 @@ h2 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     max-width: 250px; /* גודל הכרטיסיה */
     text-align: center;
-    background-color: #fff;
+    background-color: #ffffff87;
     flex: 1; /* מאפשר גמישות */
 }
 
@@ -242,6 +220,10 @@ h2 {
         font-weight: bold;
         color: #28a745;
     }
+    .bookDiv button {
+        display: block; /* להפוך את הכפתורים לאלמנטים בלוקיים */
+        margin: 10px auto; /* להוסיף מרווח אוטומטי בין הכפתורים */
+    }
 
 .stars {
     display: inline-block;
@@ -250,12 +232,12 @@ h2 {
 
     .stars i {
         font-size: 20px;
-        color: #ddd;
+        color: #636560;
         margin-right: 2px;
     }
 
     .stars .filled {
-        color: gold;
+        color: #a39913;
     }
 
 
@@ -288,7 +270,7 @@ h2 {
 #searchBooks {
     margin: 20px;
     padding: 20px;
-    background-color: #f7f7f7;
+    background-color: #ffffff87;
     border-radius: 8px;
 }
 
@@ -353,3 +335,584 @@ h2 {
         border-color: #007BFF;
     }
 /*************************************************************************************************************************************/
+/*ספר ספציפי*/
+#bookDetails {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff87;
+    border-radius: 8px;
+}
+#bookReview {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+#imgBook img {
+    width: 300px;
+}
+#bookText {
+    text-align: center;
+    margin-left: 100px;
+}
+.bookreviewDiv {
+    background-color: #ffffff87;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 20px;
+}
+/*********************************************************************************************************************************/
+/*דירוג כוכבים*/
+#AddBookReview {
+    padding: 20px;
+    background-color: #ffffff87;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    #AddBookReview h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+.icon--star {
+    position: relative;
+    direction: rtl;
+}
+
+.fichas--star .calificacion__star .icon--star i {
+    color: #f5f509;
+    font-size: 39px;
+    padding-right: 0.1875em;
+}
+
+.fichas--star .calificacion__star .icon--star:hover i,
+.fichas--star .calificacion__star .icon--star:hover i::before {
+    cursor: pointer;
+    color: #c0c0c0;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f005";
+}
+
+    .fichas--star .calificacion__star .icon--star i:hover,
+    .fichas--star .calificacion__star .icon--star:hover i:hover::before,
+    .fichas--star .calificacion__star .icon--star i:hover ~ i,
+    .fichas--star .calificacion__star .icon--star:hover i:hover ~ i::before {
+        color: #f5f509;
+    }
+
+.fa-star-o {
+    overflow: clip;
+    color: #e2943a;
+    position: absolute;
+    z-index: 30;
+}
+
+    .fa-star-o:nth-child(10) {
+        left: 20px;
+    }
+
+    .fa-star-o:nth-child(9) {
+        left: 39px;
+    }
+
+    .fa-star-o:nth-child(8) {
+        left: 70px;
+    }
+
+    .fa-star-o:nth-child(7) {
+        left: 90px;
+    }
+
+    .fa-star-o:nth-child(6) {
+        left: 115px;
+    }
+
+    .fa-star-o:nth-child(5) {
+        left: 135px;
+    }
+
+    .fa-star-o:nth-child(4) {
+        left: 165px;
+    }
+
+    .fa-star-o:nth-child(3) {
+        left: 185px;
+    }
+
+    .fa-star-o:nth-child(2) {
+        left: 215px;
+    }
+
+    .fa-star-o:nth-child(1) {
+        left: 235px;
+    }
+
+    .fa-star-o:nth-child(odd) {
+        z-index: 40;
+        width: 25px;
+    }
+
+    .fa-star-o:nth-child(10) {
+        left: 20px;
+    }
+#submitRating {
+    padding-top: 50px;
+}
+#ratingOutput {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+#reviewText {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+#submitReview {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    #submitReview:hover {
+        background-color: #0056b3;
+    }
+/*********************************************************************************************************************************/
+/*שאלונים*/
+#quizs {
+    display: flex;
+}
+#quiz-container, #advancedQuiz-container {
+    width: fit-content;
+    text-align: center;
+    margin: 50px auto;
+    margin-top: 100px;
+    padding: 40px;
+    margin-bottom: 100px;
+    padding-top: 50px;
+    background-color: #ffffff87;
+    border-radius: 8px;
+    color: white;
+}
+
+#question-container, #advancedQuestion-container {
+    margin: auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #3a3a3a;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#quiz-header, #advancedQuiz-header {
+    color: #1db0b9;
+    margin: auto;
+    margin-bottom: 30px;
+}
+#quiz-header {
+    font-size: 55px;
+}
+#advancedQuiz-header {
+    font-size: 44px;
+}
+#question-container h2, #advancedQuestion-container h2 {
+    font-size: 24px;
+    margin: 0 0 20px;
+    color: #1db0b9;
+}
+
+#question-container ul, #advancedQuestion-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+#question-container li, #advancedQuestion-container li {
+    margin-bottom: 10px;
+}
+
+#question-container button, #advancedQuestion-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #1d1d1d;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+    #question-container button.correct {
+        background-color: #1DB954;
+        color: #ffffff;
+    }
+
+    #question-container button.incorrect {
+        background-color: #ff3333;
+        color: #ffffff;
+    }
+
+    #question-container button:hover, #advancedQuestion-container button:hover {
+    }
+
+    #question-container button:focus, #advancedQuestion-container button:focus {
+        outline: none;
+    }
+/*********************************************************************************************************************************/
+
+/*additions*/
+#additions {
+    text-align: center;
+}
+/*********************************************************************************************************************************/
+
+/*********************************************************************************************************************************/
+
+/* Style the microphone icon button */
+#startButton {
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+    #startButton:focus {
+        outline: none;
+    }
+/* עיצוב סרגל הצד */
+.sidebar {
+    height: 100%;
+    width: 210px; /* הרחבת הסרגל לרוחב קצת יותר גדול */
+    position: fixed;
+    top: 60px; /* גובה הסרגל העליון */
+    left: 0;
+    background-color: #f0f0f0ba; /* רקע בהיר עם גוון מעט כהה יותר */
+    padding-top: 20px;
+    overflow-x: hidden;
+    color: #333; /* צבע טקסט כהה */
+    border-right: 2px solid #ddd; /* קו מפריד עבה יותר בצד ימין */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* הוספת צל קל בצד */
+    transition: width 0.3s ease; /* אפקט של מעבר חלק */
+}
+
+    .sidebar a {
+        display: block;
+        padding: 40px 20px; /* הגדלת הרווחים הפנימיים */
+        text-decoration: none;
+        font-size: 18px;
+        color: #333; /* צבע טקסט כהה */
+        border-radius: 5px; /* פינות מעוגלות */
+        transition: background-color 0.3s ease, color 0.3s ease; /* אפקט מעבר צבע */
+    }
+
+        .sidebar a:hover {
+            background-color: #e0e0e0; /* רקע בהיר יותר בהעבר על הכפתורים */
+            color: #007BFF; /* שינוי צבע טקסט בעת העכבר */
+        }
+
+    .sidebar .sidebar-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .sidebar .sidebar-header img {
+            height: 80px; /* גובה הלוגו בסרגל הצד */
+            width: auto; /* התאמת הרוחב באופן אוטומטי לשמירה על יחס גובה-רוחב */
+        }
+
+    .sidebar .sidebar-item {
+        padding: 15px 20px; /* רווח פנימי עם מעט יותר רווחים */
+        margin-bottom: 10px; /* רווח בין פריטים */
+        border-radius: 5px; /* פינות מעוגלות */
+        transition: background-color 0.3s ease; /* אפקט מעבר צבע */
+    }
+
+        .sidebar .sidebar-item:hover {
+            background-color: #ddd; /* רקע בהיר יותר בעת העכבר */
+        }
+
+/* עיצוב לתפריט משנה */
+.submenu {
+    display: none;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+    .submenu a {
+        padding: 20px 10px;
+        font-size: 16px;
+        font-weight: normal;
+        color: #555;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .submenu a:hover {
+            background-color: #e0e0e0;
+            color: #007BFF;
+        }
+/*********************************************************************************************************************************/
+/*admin*/
+#containerTable {
+    background-color: #ffffff87;
+}
+h1 {
+    text-align: center;
+    color: white;
+    text-align: center;
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 11%);
+}
+#btn {
+    display: flex;
+    justify-content: space-evenly;
+}
+.form-container {
+    display: none;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="number"],
+    .input-group input[type="checkbox"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .input-group input[type="checkbox"] {
+        width: auto;
+        margin-left: 5px;
+    }
+/*********************************************************************************************************************************/
+/*admin table*/
+#tableDetails {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+#tableDetails table {
+    width: 50%;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    background-color: white; /* White background for the table */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a slight shadow for a more distinct look */
+}
+
+#tableDetails th, #tableDetails td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ccc; /* Clearer border separation */
+}
+
+#tableDetails th {
+    background-color: #e9e9e9; /* A light grey for the header to differentiate from the white background */
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#tableDetails tr:nth-child(even) {
+    background-color: #f5f5f5; /* Slightly different shade for even rows */
+}
+
+#tableDetails tr:hover {
+    background-color: #f0f0f0; /* Light grey when hovering over rows */
+}
+
+#tableDetails td:first-child {
+    font-weight: 500;
+}
+/*********************************************************************************************************************************/
+/*media*/
+/*********************************************************************************************************************************/
+/* עיצוב מובייל */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .navbar .nav-buttons {
+            width: 100%;
+            justify-content: center;
+        }
+
+    /* עיצוב סרגל הצד למובייל */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        flex-wrap: wrap;
+    }
+
+        .sidebar a {
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            text-align: center;
+        }
+
+    /* עיצוב תוכן מרכזי למובייל */
+    .container {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    /* עיצוב כללי */
+    body {
+        padding-top: 100px; /* התאמת המרווח לפי גובה הסרגל */
+    }
+
+    /* עיצוב תיבות של הספרים */
+    .booksContainer {
+        grid-template-columns: 1fr; /* עמודה אחת במובייל */
+        gap: 10px; /* מרווח קטן יותר */
+    }
+
+    /* כרטיסיית ספר במובייל */
+    .bookDiv {
+        max-width: 100%; /* התאמה לרוחב המסך */
+        margin: 0 auto; /* מרכז את הכרטיסייה */
+    }
+
+    /* עיצוב הכפתורים למובייל */
+    .btnStyle {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .intro {
+        max-width: 100%;
+        left:0px;
+    }
+    /* עיצוב טקסט ראשי */
+    .intro h1 {
+        font-size: 24px; /* גודל כותרת קטן יותר */
+    }
+
+    .intro p {
+        font-size: 12px; /* גודל טקסט קטן יותר */
+    }
+
+    /* עיצוב טופס חיפוש ספרים במובייל */
+    #searchContainer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+
+    #searchType, #searchInput, #searchButton {
+        width: 100%; /* תופס את כל הרוחב במובייל */
+        font-size: 14px;
+    }
+
+    /* עיצוב ביקורות ספרים במובייל */
+    #bookDetails, #bookReview {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    #imgBook img {
+        width: 100%;
+        max-width: 300px; /* התאמת גודל תמונה למובייל */
+    }
+
+    #bookText {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    /* עיצוב דירוג כוכבים במובייל */
+    #AddBookReview {
+        max-width: 100%;
+        padding: 10px;
+    }
+    #quizs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Adds some space between the quizzes */
+    }
+
+    #quiz-container, #advancedQuiz-container {
+        width: 100%; /* Ensures both quizzes take full width */
+    }
+    /* עיצוב שאלונים במובייל */
+    #quiz-container {
+        width: 100%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    #advancedQuiz-header, #quiz-header {
+        font-size: 25px;
+    }
+
+
+    #question-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+        #question-container h2 {
+            font-size: 18px;
+        }
+
+        #question-container button {
+            padding: 8px;
+            font-size: 14px;
+        }
+}

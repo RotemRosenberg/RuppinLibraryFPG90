@@ -3,11 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../JS/mainScript.js"></script>
+    <script src="../JS/MyLibraryScript.js"></script>
+    <script src="../JS/ajaxcalls.js"></script>
     <script src="../JS/BooksScript.js"></script>
     <link href="../CSS/StyleSheet.css" rel="stylesheet" />
-    <script src="../JS/ajaxcalls.js"></script>
 </head>
 <body>
     <!-- סרגל עליון -->
@@ -28,7 +31,16 @@
         <a onclick="window.location.href='index.html'">Home</a>
         <a onclick="window.location.href='Books.html'">Books</a>
         <a onclick="window.location.href='Authors.html'">Authors</a>
-        <a onclick="window.location.href='MyLibrary.html'">My Library</a>
+        <a id="myLibraryBTN">My Library</a>
+        <div id="mylibrary-submenu" class="submenu">
+            <a id="wishListBTN">My Books</a>
+            <a id="booksIReadBTN">Done Reading</a>
+            <a id="onlineShopBTN">Online Books Shop</a>
+            <a id="purchaseBTN">Purchase Requests</a>
+        </div>
+        <a id="adminLink" onclick="window.location.href='Admin.html'">Admin</a>
+        <a onclick="window.location.href='Additions.html'">Additions</a>
+
     </div>
 
     <!-- תוכן מרכזי -->
@@ -42,6 +54,9 @@
                     <option value="text">By Text</option>
                 </select>
                 <input type="text" id="searchInput" placeholder="Search">
+                <button id="startButton">
+                    <i class="fas fa-microphone"></i>
+                </button>
                 <button id="searchButton">Search</button>
             </div>
         </div>

@@ -1,79 +1,27 @@
-﻿$(document).ready(function () {
-    $("#loginBTN").click(openLoginForm);
-    $("#registerBTN").click(function () {
-        openRegistrationForm();
-    });
-    $("#logoutBTN").click(Logout);
-    if (localStorage.getItem("loggedUser")) {
-        accountDetails()
-        $("#loginBTN").hide();
-        $("#registerBTN").hide();
-        $("#logoutBTN").show();
-    }
-    else {
-        document.getElementById("accountDetails").innerText = "";
-        $("#loginBTN").show();
-        $("#registerBTN").show();
-        $("#logoutBTN").hide();
-    }
+﻿const createBookReview = (userId, bookId, rating, review, userName) => ({ userId, bookId, rating, review, userName });
+
+$(document).ready(function () {
     SpecificBook();
+    VoiceToText()
+    $(".icon--star i").click(function () {
+        let rating = $(this).data("value");
+        $("#ratingOutput").text("Selected Rating: " + rating);
+        console.log("Selected Rating: " + rating);
+        localStorage.setItem('rating', rating);
+    });
+    $("#submitReview").click(function () {
+        if (localStorage.getItem("loggedUser")) {
+            AddBookReview();
+
+        }
+        else alert("Please log in to access this feature.");
+  });
 });
-//login system
-function accountDetails() {
 
-    let api = `https://localhost:7163/api/Users/` + localStorage.getItem('loggedUser');
-    ajaxCall("GET", api, "", getAccount, failedAccount);
-
-}
-function getAccount(account) {
-    document.getElementById("accountDetails").innerHTML =
-        `Hello <span style="color: red; font-weight: bold;">${account.name}</span> Balance: 
-        <span style="color: red; font-weight: bold;">${account.balance}$</span>`;
-    console.log(account);
-}
-function failedAccount(err) {
-    console.log(err);
-}
-//login form
-function openLoginForm() {
-    var url = "loginForm.html";
-
-    var width = 600;
-    var height = 700;
-    var left = (screen.width - width) / 2;
-    var top = (screen.height - height) / 2;
-    var features = `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`;
-
-    // Open the registration form page in a pop-up window
-    window.open(url, "_blank", features);
-
-}
-//Logout
-function Logout() {
-    if (localStorage.getItem("loggedUser")) {
-        localStorage.removeItem("loggedUser");
-        $("#libraryBTN").hide();
-        alert("Disconnected succefully");
-        location.reload();
-    }
-}
-//register form
-function openRegistrationForm() {
-    var url = "RegisterForm.html";
-
-    var width = 600;
-    var height = 700;
-    var left = (screen.width - width) / 2;
-    var top = (screen.height - height) / 2;
-    var features = `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`;
-
-    // Open the registration form page in a different window
-    window.open(url, "_blank", features);
-}
 
 //DisplaySpecificBook
 function SpecificBook() {
-    let api = `https://localhost:7163/api/Book/id/` + localStorage.getItem('selectedBookId');
+    let api = `https://194.90.158.74/cgroup90/test2/tar1/api/Book/id/` + localStorage.getItem('selectedBookId');
     ajaxCall("GET", api, "", getSCBF, getECBF);
 }
 function getSCBF(result) {
@@ -85,22 +33,13 @@ function getECBF(err) {
 }
 
 function RenderSpecificBook(book) {
-
-        // מוודא שהאלמנטים קיימים לפני המשך הביצוע
+    localStorage.setItem('book', book.id);
         let bookIMGContainer = document.getElementById('imgBook');
         let bookTextContainer = document.getElementById('bookText');
         let bookReviewContainer = document.getElementById('bookReview');
     bookIMGContainer.innerHTML = '';
     bookTextContainer.innerHTML = '';
     bookReviewContainer.innerHTML = '';
-        if (!bookIMGContainer || !bookTextContainer || !bookReviewContainer) {
-            console.error('One or more elements were not found in the DOM');
-            console.log(document.getElementById('bookIMG'));
-            console.log(document.getElementById('bookText'));
-            console.log(document.getElementById('bookReview'));
-
-            return;
-        }
 
         // תמונת הספר
         let bookImg = document.createElement('img');
@@ -113,7 +52,7 @@ function RenderSpecificBook(book) {
         bookTextContainer.appendChild(title);
 
         // כותרת משנה
-        let subTitle = document.createElement('h3');
+        let subTitle = document.createElement('h4');
         subTitle.innerText = book.subTitle;
         bookTextContainer.appendChild(subTitle);
 
@@ -127,6 +66,35 @@ function RenderSpecificBook(book) {
         Name.innerText += ", " + book.authorNames[2];
     }
     bookTextContainer.appendChild(Name);
+
+    // קטגוריות
+    let categories = document.createElement('p');
+    categories.innerText = "Categories: "+book.categories;
+    bookTextContainer.appendChild(categories);
+
+    // שפה
+    let language = document.createElement('p');
+    language.innerText = "Language: " + book.language;
+    bookTextContainer.appendChild(language);
+
+    // הוצאה לאור
+    let publishedDate = document.createElement('p');
+    publishedDate.innerText = "Published Date: " + book.publishedDate;
+    bookTextContainer.appendChild(publishedDate);
+
+    //מפרסם
+    let publisher = document.createElement('p');
+    publisher.innerText = "Publisher: " + book.publisher;
+    bookTextContainer.appendChild(publisher);
+    //דפים
+    let pageCount = document.createElement('p');
+    pageCount.innerText = "Page Count: " + book.pageCount;
+    bookTextContainer.appendChild(pageCount);
+
+    //תיאור
+    let description = document.createElement('p');
+    description.innerText = "Description: " + book.description;
+    bookTextContainer.appendChild(description);
 
         // סוג הספר (דיגיטלי או פיזי)
         let ebook = document.createElement('p');
@@ -154,5 +122,192 @@ function RenderSpecificBook(book) {
             rating.appendChild(star);
         }
 
-        bookTextContainer.appendChild(rating);  // הוספת הדירוג לקונטיינר הטקסט
+    bookTextContainer.appendChild(rating);  // הוספת הדירוג לקונטיינר הטקסט
+
+    // add to wishlist button
+    let wishListBTN = document.createElement('button');
+    wishListBTN.innerText = 'Buy Book';
+    wishListBTN.classList.add('btnStyle');
+    wishListBTN.addEventListener('click', function () {
+        if (localStorage.getItem('userBalance') >= book.price) {
+            if (book.isBooked == 1 && book.isEbook == false) {
+                alert("The book has already been purchased by another user.\n Please try purchasing it through the online shop.");
+            }
+            else {    // שמירת ה-ID של הספר ב-localStorage
+                localStorage.setItem('selectedBookId', book.id);
+                addToWishList(book);
+            }
+        }
+        else {
+            alert("You don't have enough money in your account to purchase this book");
+        }
+    });
+    bookTextContainer.appendChild(wishListBTN);
+    let api = `https://194.90.158.74/cgroup90/test2/tar1/api/BookReview/` + book.id;
+    ajaxCall("GET", api, "", bookReviewSCBF, bookReviewECBF);
+}
+function bookReviewSCBF(result) {
+    RenderBookReview(result);
+    console.log(result);
+}
+function bookReviewECBF(err) {
+    console.log(err);
+}
+
+function RenderBookReview(data) {
+    if (data.length==0) {
+        document.getElementById("bookReviewTitle").style.display = 'none'
+        document.getElementById('bookReview').style.display = 'none';
+    }
+    else {
+        document.getElementById("bookReviewTitle").style.display = 'block'
+
+        let bookReviewContainer = document.getElementById('bookReview');
+        bookReviewContainer.style.backgroundColor = 'f7f7f7';
+        for (let review of data) {
+            let bookReviewDiv = document.createElement('div');
+            bookReviewDiv.className = "bookreviewDiv";
+
+            // יצירת קונטיינר עבור שם המשתמש ואייקון
+            let userDiv = document.createElement('div');
+            userDiv.className = "userDiv";
+
+            // אייקון של המשתמש
+            let userIcon = document.createElement('i');
+            userIcon.className = 'fas fa-user user-icon';
+            userDiv.appendChild(userIcon);
+
+            // שם המשתמש
+            let userName = document.createElement('span');
+            userName.className = "userName";
+            userName.innerText = review.userName; // assuming 'userName' is a property in 'review'
+            userDiv.appendChild(userName);
+
+            bookReviewDiv.appendChild(userDiv); // הוספת קונטיינר המשתמש לקונטיינר הביקורת
+
+            // ציון הספר (כוכבים)
+            let rating = document.createElement('div');
+            rating.className = "stars";
+
+            for (let i = 1; i <= 5; i++) {
+                let star = document.createElement('i');
+                if (i <= Math.floor(review.rating)) {
+                    star.className = 'fas fa-star filled';
+                } else if (i === Math.ceil(review.rating) && !Number.isInteger(review.rating)) {
+                    star.className = 'fas fa-star-half-alt filled';
+                } else {
+                    star.className = 'far fa-star';
+                }
+                rating.appendChild(star);
+            }
+
+            bookReviewDiv.appendChild(rating);  // הוספת הדירוג לקונטיינר הטקסט
+            //תיאור
+            let description = document.createElement('p');
+            description.innerText = review.review;
+            bookReviewDiv.appendChild(description);
+            bookReviewContainer.appendChild(bookReviewDiv)
+        }
+    }
+}
+
+function AddBookReview() {
+    let newBookReview = createBookReview(localStorage.getItem('loggedUser'), localStorage.getItem('book'), localStorage.getItem('rating'), document.getElementById('reviewText').value, localStorage.getItem('userName'));
+    let api = `https://194.90.158.74/cgroup90/test2/tar1/api/BookReview`;
+    ajaxCall("POST", api, JSON.stringify(newBookReview), postRSCBF, postRECBF);
+    return false;
+
+}
+
+function postRSCBF(data) {
+    console.log(data);
+    if (data) {
+        alert("Your review has been successfully submitte.");
+        window.location.reload();
+    }
+    else {
+        alert("You have already reviewed this book.");
+    }
+}
+function postRECBF(err) {
+    alert("You have already reviewed this book.");
+    console.log(err);
+}
+
+function addToWishList(book) {
+    let loggedUserID = localStorage.getItem('loggedUser')
+    if (loggedUserID == null) {
+        alert("You may login in order to add item to your wishlist");
+    }
+    else { // logged in user
+        let api = `https://194.90.158.74/cgroup90/test2/tar1/api/UserBooks?bookID=${book.id}&userID=${loggedUserID}&bookPrice=${book.price}`;
+        ajaxCall("POST", api, "", addTWLSCBF, addTWLECBF);
+    }
+
+}
+
+function addTWLSCBF(res) {
+    accountDetails();
+    showSuccessCheckmark();
+    console.log(res);
+
+}
+function addTWLECBF(err) {
+    console.log(err);
+    alert("You have already purchased this book")
+}
+
+//buy checkmark
+function showSuccessCheckmark() {
+    // Create a new div for the checkmark
+    let checkmarkDiv = document.createElement('div');
+
+    // Set styles for the checkmark
+    checkmarkDiv.innerHTML = '&#10004;'; // Unicode for a checkmark
+    checkmarkDiv.style.position = 'fixed';
+    checkmarkDiv.style.top = '50%';
+    checkmarkDiv.style.left = '50%';
+    checkmarkDiv.style.transform = 'translate(-50%, -50%)';
+    checkmarkDiv.style.fontSize = '100px';
+    checkmarkDiv.style.color = 'green';
+    checkmarkDiv.style.zIndex = '1000';
+    checkmarkDiv.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+    checkmarkDiv.style.padding = '20px';
+    checkmarkDiv.style.borderRadius = '50%';
+    checkmarkDiv.style.textAlign = 'center';
+    checkmarkDiv.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
+
+    // Append the checkmark to the body
+    document.body.appendChild(checkmarkDiv);
+
+    // Remove the checkmark after 2 seconds
+    setTimeout(function () {
+        checkmarkDiv.remove();
+        alert("Purchase Successful! Thank you for your purchase.Enjoy your new book!");
+    }, 1500);
+}
+//voice to text
+function VoiceToText() {
+    const startButton = document.getElementById('startButton');
+    const searchInput = document.getElementById('reviewText');
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+    recognition.lang = 'en-US';
+
+    recognition.onstart = () => {
+        startButton.innerHTML = '<i class="fas fa-microphone-alt"></i>';
+    };
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        searchInput.value = transcript; // Update the search input field with the recognized text
+    };
+
+    recognition.onend = () => {
+        startButton.innerHTML = '<i class="fas fa-microphone"></i>';
+    };
+
+    startButton.addEventListener('click', () => {
+        recognition.start();
+    });
 }

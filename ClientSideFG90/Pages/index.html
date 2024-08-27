@@ -3,11 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <title>Ruppin Library</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="../CSS/StyleSheet.css" rel="stylesheet" />
-    <script src="../JS/indexScript.js"></script>
     <script src="../JS/ajaxcalls.js"></script>
+    <script src="../JS/mainScript.js"></script>
+    <script src="../JS/MyLibraryScript.js"></script>
+    <script src="../JS/SimleQuizScript.js"></script>
+    <script src="../JS/advancedQuizScript.js"></script>
+    <script src="../JS/indexScript.js"></script>
 </head>
 <body>
     <!-- סרגל עליון -->
@@ -28,7 +33,16 @@
         <a onclick="window.location.href='index.html'">Home</a>
         <a onclick="window.location.href='Books.html'">Books</a>
         <a onclick="window.location.href='Authors.html'">Authors</a>
-        <a onclick="window.location.href='MyLibrary.html'">My Library</a>
+        <a id="myLibraryBTN" >My Library</a>
+        <div id="mylibrary-submenu" class="submenu">
+            <a id="wishListBTN">My Books</a>
+            <a id="booksIReadBTN">Done Reading</a>
+            <a id="onlineShopBTN">Online Books Shop</a>
+            <a id="purchaseBTN">Purchase Requests</a>
+        </div>
+        <a id="adminLink" onclick="window.location.href='Admin.html'">Admin</a>
+        <a onclick="window.location.href='Additions.html'">Additions</a>
+
     </div>
 
     <!-- תוכן מרכזי -->
@@ -39,11 +53,30 @@
                 Your gateway to knowledge and discovery. Our library offers a vast collection of books, journals, and digital resources to support your learning and research. Whether you're a student, a researcher, or a book lover, you'll find a wealth of information and inspiration here. Explore our popular books below and delve into the world of knowledge.
             </p>
         </div>
-        <h2>Top 5 Popular Books</h2>
+        <h1>Top 5 Popular Books</h1>
         <div id="top5" class="booksContainer">
+        </div>
+        <h1 id="recommendedHeader" style="display:none">Recommendations just for you</h1>
+        <div id="recommended" class="booksContainer">
+
         </div>
         <div class="btnContainer">
             <button class="btnStyle" onclick="window.location.href='Books.html'">View All Books</button>
+        </div>
+        <div id="quizs">
+            <div id="quiz-container">
+                <div id="quiz-header">Books Quiz</div>
+                <div id="question-container"></div>
+            </div>
+            <div id="advancedQuiz-container">
+                <div id="advancedQuiz-header">Find Your Perfect Book Match</div>
+                <div id="advancedQuestion-container"></div>
+            </div>
+
+        </div>
+        <h1 id="perfectBookTitle"></h1>
+        <div id="perfectBook" class="booksContainer">
+
         </div>
     </div>
 </body>

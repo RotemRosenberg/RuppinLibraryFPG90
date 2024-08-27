@@ -17,10 +17,10 @@ namespace ServerSideFG90.Controllers
         }
 
         // GET api/<AuthorController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{name}")]
+        public IEnumerable<Author> Get(string name)
         {
-            return "value";
+            return Author.ReadAuthorsByName(name);
         }
 
         // POST api/<AuthorController>

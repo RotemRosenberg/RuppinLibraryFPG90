@@ -29,5 +29,10 @@ namespace ServerSideFG90.BL
             DBservices dbs = new DBservices();
             return dbs.ReadAllAuthors();
         }
+        public static List<Author> ReadAuthorsByName(string name)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.AuthorsByName(name);
+        }
     }
 }

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js" type="text/javascript"></script>
+    <script src="../JS/mainScript.js"></script>
+    <script src="../JS/MyLibraryScript.js"></script>
+    <script src="../JS/ajaxcalls.js"></script>
+    <script src="../JS/AdminScript.js"></script>>
+    <link href="../CSS/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- סרגל עליון -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="../images/Ruppin Library.png" alt="Ruppin Library Logo" />
+        </div>
+        <div class="nav-buttons">
+            <p id="accountDetails"></p>
+            <button id="loginBTN">Login</button>
+            <button id="registerBTN">Register</button>
+            <button id="logoutBTN">Logout</button>
+        </div>
+    </div>
+
+    <!-- סרגל צדדי -->
+    <div class="sidebar">
+        <a onclick="window.location.href='index.html'">Home</a>
+        <a onclick="window.location.href='Books.html'">Books</a>
+        <a onclick="window.location.href='Authors.html'">Authors</a>
+        <a id="myLibraryBTN">My Library</a>
+        <div id="mylibrary-submenu" class="submenu">
+            <a id="wishListBTN">My Books</a>
+            <a id="booksIReadBTN">Done Reading</a>
+            <a id="onlineShopBTN">Online Books Shop</a>
+            <a id="purchaseBTN">Purchase Requests</a>
+        </div>
+        <a id="adminLink" onclick="window.location.href='Admin.html'">Admin</a>
+        <a onclick="window.location.href='Additions.html'">Additions</a>
+
+    </div>
+
+    <!-- תוכן מרכזי -->
+    <div class="container">
+        <h1>Admin Page</h1>
+        <div id="containerTable">
+            <table id="example" class="hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>SubTile</th>
+                        <th>Author Name 1</th>
+                        <th>Author Id 1</th>
+                        <th>Author Name 2</th>
+                        <th>Author Id 2</th>
+                        <th>Author Name 3</th>
+                        <th>Author Id 3</th>
+                        <th>Publisher</th>
+                        <th>Page Count</th>
+                        <th>Categories</th>
+                        <th>Rating</th>
+                        <th>isEbook</th>
+                        <th>Price</th>
+                        <th>PublishedDate</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>   </tbody>
+            </table>
+        </div>
+        <div id="btn">
+            <button class="btnStyle" id="addBook">Add Book</button>
+            <button class="btnStyle" id="BookedBooks">Books</button>
+            <button class="btnStyle" id="BookedAuthors">Authors</button>
+            <button class="btnStyle" id="BookedUsers">Users</button>
+
+        </div>
+        <div class="form-container" id="bookForm">
+            <h2>Add New Book</h2>
+            <div id="addBookForm">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subtitle">Sub Title:</label>
+                    <input type="text" id="subtitle" name="subtitle">
+                </div>
+
+                <div class="form-group">
+                    <label for="authorName">Author Name:</label>
+                    <input type="text" id="authorName" name="authorName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="categories">Category:</label>
+                    <input type="text" id="categories" name="categories" required>
+                </div>
+                <div class="form-group">
+                    <label for="publisher">Publisher:</label>
+                    <input type="text" id="publisher" name="publisher" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pageCount">Page Count:</label>
+                    <input type="number" id="pageCount" name="pageCount" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="imageLink">Image Link:</label>
+                    <input type="text" id="imageLink" name="imageLink" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="language">Language:</label>
+                    <input type="text" id="language" name="language" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="previewLink">Preview Link:</label>
+                    <input type="text" id="previewLink" name="previewLink" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="isEbook">Is Ebook:</label>
+                    <input type="checkbox" id="isEbook" name="isEbook">
+                </div>
+
+                <div class="form-group">
+                    <label for="webReaderLink">Web Reader Link:</label>
+                    <input type="text" id="webReaderLink" name="webReaderLink" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" required>
+                </div>
+
+                <div class="form-group">
+                    <button class="btnStyle" id="insertBook">Insert Book</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div id="tableDetails"></div>
+    </div>
+</body>
+</html>

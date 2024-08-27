@@ -8,7 +8,7 @@ const createUser = (id, name, email, password, isAdmin, balance) => ({ id, name,
 const defaultDate = '14/08/1998'
 //---------login---------//
 function Login() {
-    let api = `https://localhost:7163/api/Users/login?email=` + encodeURIComponent($('#emailTB').val());
+    let api = `https://194.90.158.74/cgroup90/test2/tar1/api/Users/login?email=` + encodeURIComponent($('#emailTB').val());
     ajaxCall("POST", api, JSON.stringify($('#passwordTB').val()), postLSCBF, postLECBF);
     return false;
 }
@@ -36,7 +36,7 @@ function postLECBF(err) {
 /*---------register---------//*/
 function Register() {
     let newUser = createUser(0, $('#nameTB').val(), $('#emailTB').val(), $('#passwordTB').val(), false,0);
-    let api = `https://localhost:7163/api/Users/register`;
+    let api = `https://194.90.158.74/cgroup90/test2/tar1/api/Users/register`;
     ajaxCall("POST", api, JSON.stringify(newUser), postRSCBF, postRECBF);
     return false;
 

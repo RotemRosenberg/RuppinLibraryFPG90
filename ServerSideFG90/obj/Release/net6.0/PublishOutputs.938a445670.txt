@@ -1,0 +1,17 @@
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\ServerSideFG90.exe
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\ServerSideFG90.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\ServerSideFG90.deps.json
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\ServerSideFG90.runtimeconfig.json
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\ServerSideFG90.pdb
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\System.Data.SqlClient.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\sni.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\sni.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\sni.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\rotem\OneDrive\שולחן העבודה\FinalProjectG90\ServerSideFG90\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

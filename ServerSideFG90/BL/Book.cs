@@ -22,28 +22,31 @@ namespace ServerSideFG90.BL
         int price;
         int publishedDate;
         string[] authorNames = new string[3];
+        int isBooked;
 
         public Book() { }
-        public Book(int id, string title, string subTitle, int[] authorsID, string publisher, string description, int pageCount, string categories, double averageRating, string smallPicURL, string picURL, string language, string preivewLink, bool isEbook, string webReaderLink, int price, int publishedDate, string[] authorNames)
+
+        public Book(int id, string title, string subTitle, int[] authorsID, string publisher, string description, int pageCount, string categories, double averageRating, string smallPicURL, string picURL, string language, string preivewLink, bool isEbook, string webReaderLink, int price, int publishedDate, string[] authorNames, int isBooked)
         {
-            this.Id = id;
-            this.Title = title;
-            this.SubTitle = subTitle;
-            this.AuthorsID = authorsID;
-            this.Publisher = publisher;
-            this.Description = description;
-            this.PageCount = pageCount;
-            this.Categories = categories;
-            this.AverageRating = averageRating;
-            this.SmallPicURL = smallPicURL;
-            this.PicURL = picURL;
-            this.Language = language;
-            this.PreivewLink = preivewLink;
-            this.IsEbook = isEbook;
-            this.WebReaderLink = webReaderLink;
-            this.Price = price;
-            this.PublishedDate = publishedDate;
-            this.AuthorNames = authorNames;
+            Id = id;
+            Title = title;
+            SubTitle = subTitle;
+            AuthorsID = authorsID;
+            Publisher = publisher;
+            Description = description;
+            PageCount = pageCount;
+            Categories = categories;
+            AverageRating = averageRating;
+            SmallPicURL = smallPicURL;
+            PicURL = picURL;
+            Language = language;
+            PreivewLink = preivewLink;
+            IsEbook = isEbook;
+            WebReaderLink = webReaderLink;
+            Price = price;
+            PublishedDate = publishedDate;
+            AuthorNames = authorNames;
+            IsBooked = isBooked;
         }
 
         public int Id { get => id; set => id = value; }
@@ -64,6 +67,7 @@ namespace ServerSideFG90.BL
         public int Price { get => price; set => price = value; }
         public int PublishedDate { get => publishedDate; set => publishedDate = value; }
         public string[] AuthorNames { get => authorNames; set => authorNames = value; }
+        public int IsBooked { get => isBooked; set => isBooked = value; }
 
         public static List<Book> ReadAll()
         {
@@ -90,12 +94,51 @@ namespace ServerSideFG90.BL
             DBservices dbs = new DBservices();
             return dbs.BooksByAuthor(author);
         }
-
+        public static List<Book> readBooksByCategory(string category)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.BooksByCategory(category);
+        }
+         public static List<Book> ReadAllAdmin()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.ReadAllBooksAdmin();
+        }
         public static List<Book> Top5()
         {
             DBservices dbs = new DBservices();
             return dbs.Top5Books();
         }
+        public Book AddBook()
+        {
+            DBservices dbs = new DBservices();
+             return dbs.InsertBook(this);
 
+        }
+        public bool Update()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.UpdateBook(this);
+        }
+        public static bool Delete(int id)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.DeleteBook(id);
+        }
+        public static List<Book> BookedBooks()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.GetBookedBooks();
+        }
+        public static List<AuthorBooked> BookedAuthors()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.GetBookedAuthors();
+        }
+        public static List<UsersBooked> BookedUsers()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.GetBookedUsers();
+        }
     }
 }

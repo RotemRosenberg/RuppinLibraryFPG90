@@ -22,7 +22,30 @@ namespace ServerSideFG90.Controllers
         {
             return Book.Top5();
         }
-
+        // GET api/<BookController>/5
+        [HttpGet("BookedBooks")]
+        public IEnumerable<Book> BookedBooks()
+        {
+            return Book.BookedBooks();
+        }
+        // GET api/<BookController>/5
+        [HttpGet("BookedAuthors")]
+        public IEnumerable<AuthorBooked> BookedAuthors()
+        {
+            return Book.BookedAuthors();
+        }
+        // GET api/<BookController>/5
+        [HttpGet("BookedUsers")]
+        public IEnumerable<UsersBooked> BookedUsers()
+        {
+            return Book.BookedUsers();
+        }
+        // GET api/<BookController>/5
+        [HttpGet("Admin")]
+        public IEnumerable<Book> ReadAdmin()
+        {
+            return Book.ReadAllAdmin();
+        }
         // GET api/<BookController>/id/5
         [HttpGet("id/{id}")]
         public Book GetSpecificBook(int id)
@@ -52,6 +75,15 @@ namespace ServerSideFG90.Controllers
                 }
                 return Ok(books);
             }
+            else if (type == "category")
+            {
+                List<Book> books = Book.readBooksByCategory(query);
+                if (books == null || books.Count == 0)
+                {
+                    return NotFound();
+                }
+                return Ok(books);
+            }
             else if (type == "text")
             {
                 List<Book> books = Book.readBooksByText(query);
@@ -66,20 +98,25 @@ namespace ServerSideFG90.Controllers
 
         // POST api/<BookController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Book Post([FromBody] Book book)
         {
+            return book.AddBook();
         }
 
         // PUT api/<BookController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public bool Put([FromBody] Book book)
         {
+            return book.Update();
         }
 
         // DELETE api/<BookController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            if (Book.Delete(id))
+                return Ok(id);
+            else return NotFound("There is no Course with this id:" + id);
         }
     }
 }
