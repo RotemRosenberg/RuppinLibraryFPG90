@@ -129,9 +129,16 @@ function AplayAgain() {
 }
 
 function AgetRandomQuestion() {
+    // מסנן את השאלות שעדיין לא נשאלו על ידי השחקן
     const remainingQuestions = advancedQuestions.filter((_, index) => !ApreviousQuestionIndexes.includes(index));
+
+    // בוחר שאלה אקראית מתוך השאלות שנותרו
     const randomQuestion = remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)];
+
+    // מציג את השאלה האקראית שנבחרה בקונסול לצורך בדיקה
     console.log(randomQuestion);
+
+    // מחזיר את השאלה האקראית שנבחרה
     return randomQuestion;
 }
 
@@ -148,7 +155,7 @@ function AcheckAnswer(event) {
     // עדכון הניקוד של הקטגוריה שנבחרה
     AcategoryScores[selectedCategory]++;
 
-    // Disable buttons temporarily to prevent multiple clicks
+    // השבת זמנית את הכפתורים כדי למנוע לחיצות מרובות.
     const buttons = document.querySelectorAll("#advancedQuestion-container button");
     buttons.forEach(button => button.disabled = true);
 

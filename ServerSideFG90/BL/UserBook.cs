@@ -31,7 +31,6 @@ namespace ServerSideFG90.BL
         {
             DBservices dbs = new DBservices();
             return dbs.GetAllReadedBooksDB(userID);
-
         }
         public static List<Book> GetAllRecommandedBooks(int userID)
         {
