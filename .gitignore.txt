@@ -1,1 +1,2 @@
 .vs/
+ServerSideFG90/appsettings.json
